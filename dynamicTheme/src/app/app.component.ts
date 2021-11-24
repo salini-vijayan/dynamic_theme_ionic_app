@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppState } from './app.global';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -6,13 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Default Red', theme: 'theme-red', color:'assets/imgs/FF0000.png' },
+    { title: 'Noir', theme: 'theme-noir', color:'assets/imgs/333333.png' },
+    // { title: 'Clover', theme: 'theme-clover', color:'assets/imgs/388E3C.png' },
+    // { title: 'Blueberry', theme: 'theme-blueberry', color:'assets/imgs/1e88e5.png' }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  constructor( public global:AppState) {}
+
+
+  changeTheme(theme:any){
+    console.log("Now Changing theme to "+ theme);
+    this.global.set('theme', theme);
+  }
 }
